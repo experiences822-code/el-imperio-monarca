@@ -5,7 +5,7 @@ import {serviceCategories, services, products} from './data';
 import {backendStatus} from './supabase';
 
 const WHATSAPP = '573222119319';
-const A='/assets/';
+const A=`${import.meta.env.BASE_URL}assets/`;
 const navItems=[['Inicio','/'],['Nosotros','/nosotros'],['Servicios','/servicios'],['Tienda','/tienda'],['Amor propio','/amor-propio'],['Contacto','/contacto']];
 
 function IntroCurtain({onFinish}) {

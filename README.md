@@ -1,69 +1,80 @@
-# EL IMPERIO MONARCA by I DO NAILS — Versión 5.1.0
+# EL IMPERIO MONARCA by I DO NAILS — V2.0.0
 
-Aplicativo web responsive desarrollado con React + Vite. Dirección visual: café mocha, crema vainilla, champagne y oro suave; iluminación ambiental inspirada en velas, transparencias y paneles de cristal.
+Sitio web responsive desarrollado con React + Vite. V2 conserva la identidad cálida y editorial de la versión aprobada y corrige la publicación en GitHub Pages para el repositorio `el-imperio-monarca`.
 
 ## Requisitos
-- Node.js 20 LTS recomendado (Node 18.18+ como mínimo para Vite 6).
+
+- Node.js 20 LTS.
 - npm.
+- Git (solo para publicar).
 
-## Ejecutar en VS Code
-1. Descomprimir el ZIP.
-2. Abrir en VS Code la carpeta `el_imperio_monarca_rebuild` (la que contiene `package.json`).
-3. Abrir la terminal integrada y ejecutar:
+## Ejecutar localmente
 
-```bash
+Abrir esta carpeta (la que contiene `package.json`) en VS Code y ejecutar:
+
+```powershell
 npm install
 npm run dev
 ```
 
-4. Abrir la URL local que muestre Vite. Mantener la terminal abierta mientras se usa el sitio.
+Vite mostrará la dirección local. Mantener la terminal abierta mientras se utiliza el sitio.
 
-Para compilar la versión de producción:
+## Compilar
 
-```bash
+```powershell
 npm run build
-npm run preview
 ```
 
-## Identidad y recursos gráficos
-- Se conservan los PNG originales suministrados: `portadablanca.png`, `portadanegra.png`, `fondoblanco.png`, `fondodorado.png`, `fondonegro.png`, `divisionesblanca.png` y `divisionesnegra.png`.
-- `portadablanca.png` y `portadanegra.png` se integran como marcas de agua decorativas en la portada principal, sin alterar sus archivos.
-- La mariposa de fondo utiliza el recurso original de marca en baja opacidad.
-- La cortina de bienvenida mantiene los elementos PNG de identidad y aparece cada vez que se recarga el sitio.
-- Se mantienen las fotografías editadas originales de uñas y cabello.
-- Se incorporan cuatro imágenes de apoyo generadas para la maqueta en `public/assets/ritual/` (cuidado corporal, pedicure, cejas/pestañas y cuidado capilar). Son imágenes conceptuales; no representan resultados garantizados ni inventario específico.
+La salida de producción queda en `dist/`.
 
-## Cambios V5
-- Portada principal con las dos imágenes PNG de marca como marcas de agua.
-- Mariposa monarca ambiental en el fondo del sitio.
-- Paneles translúcidos más visibles y bordes más redondeados, manteniendo geometrías rectangulares.
-- Sección Amor propio ampliada con la filosofía RITUAL y cuatro pasos de cuidado: limpieza, exfoliación moderada, hidratación y protección/constancia.
-- Se desarrollan los tres pilares del concepto RITUAL: ancestralidad, enfoque de terapéutico (con lenguaje responsable sobre el respaldo de ingredientes y fórmulas) y lujo sensorial.
-- Transiciones de navegación y microinteracciones conservadas.
-- Diseño adaptable a celular y computador.
+## Publicar
 
-## Funcionalidades incluidas
-- Cortina de bienvenida al cargar o refrescar la página.
-- Navegación: inicio, nosotros, servicios, tienda, amor propio, contacto, agendamiento y carrito.
-- Catálogo por departamentos, búsqueda y tarifas de referencia.
-- Lista de consulta de productos y acceso a WhatsApp.
-- Solicitudes de agendamiento almacenadas localmente en el navegador.
-- Panel administrativo demostrativo local.
+El workflow `.github/workflows/deploy.yml` despliega automáticamente al hacer `git push` a `main`. La configuración de Vite, el enrutador y los recursos gráficos ya contemplan la subruta de GitHub Pages `/el-imperio-monarca/`.
 
-## Backend y publicación
-La conexión con Supabase está preparada mediante `.env.example`, `src/supabase.js` y `supabase/schema.sql`. Para habilitarla, configura `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`, aplica el esquema y define autenticación, roles y políticas RLS.
+Instrucciones completas: [`docs/DEPLOY_GITHUB_PAGES.md`](docs/DEPLOY_GITHUB_PAGES.md).
 
-**Estado:** prototipo funcional de frontend. Las solicitudes locales no se sincronizan entre dispositivos y el panel `/admin` no tiene autenticación. No publicar como sistema de producción hasta conectar y proteger el backend.
+## Diseño y experiencia
 
-## Datos comerciales
-Los precios son referencias del documento de tarifas compartido y deben confirmarse con el establecimiento antes de publicarse. El número de WhatsApp configurado también debe validarse.
+- Fondo café cálido con destellos y luces ambientales.
+- Crema vainilla, champagne y oro suave.
+- Paneles translúcidos y bordes redondeados sin perder la geometría rectangular.
+- Portada editorial con mariposa monarca y marcas de agua de marca.
+- Cortina de bienvenida que aparece en cada carga/refresco.
+- Transiciones suaves y responsive para celular, tablet y computador.
 
+## Secciones y funciones
 
-## Versión 5.1 — portada editorial
-- Se conserva la cortina de bienvenida, navegación, catálogo, servicios, tienda, ritual, contacto y estructura Supabase de V5.
-- Encabezado actualizado: símbolo monarca lineal junto al nombre tipográfico.
-- Portada rediseñada con panel de bienvenida translúcido, fotografía cálida de ritual corporal, mariposa ambiental y panel de valores.
-- Diseño responsive para escritorio, tablet y móvil.
-- Las imágenes de marca originales portadablanca.png y portadanegra.png se conservan como detalles de marca de agua.
+Inicio, Nosotros, Servicios por categoría, Tienda/Distribuidora, Amor propio, Contacto, Agendamiento, Carrito de consulta y Panel administrativo demostrativo. La selección de productos y las solicitudes de cita funcionan localmente en el navegador; la solicitud de cita no confirma disponibilidad automáticamente.
 
-Para ejecutar: abre esta carpeta en VS Code, ejecuta `npm install` y luego `npm run dev`.
+## Precios y catálogo
+
+Los valores de `src/data.js` se basan en la lista de precios suministrada. Los precios marcados “desde” y los servicios que requieran valoración deben confirmarse antes de la atención. Las imágenes de producto son referencias visuales; marcas, stock y precios de distribuidora deben validarse antes de anunciar disponibilidad.
+
+## Supabase
+
+La integración es opcional y está preparada, pero no se requiere para ejecutar ni publicar el frontend. Ver [`docs/SEGURIDAD_Y_SUPABASE.md`](docs/SEGURIDAD_Y_SUPABASE.md). No subir secretos al repositorio.
+
+## Estructura
+
+```text
+el_imperio_monarca_rebuild/
+├── .github/workflows/deploy.yml
+├── docs/
+├── public/assets/
+├── src/
+├── supabase/schema.sql
+├── index.html
+├── 404.html
+├── package.json
+└── vite.config.js
+```
+
+## Publicación rápida desde PowerShell
+
+Con Git instalado, abre PowerShell dentro de esta carpeta y ejecuta:
+
+```powershell
+.\publicar-github.ps1
+```
+
+El script instala dependencias, verifica las imágenes, construye `dist` y envía los cambios a `main`. Si extraes el ZIP en una carpeta nueva sin `.git`, recupera el historial del repositorio de GitHub antes de preparar el commit. La autenticación de GitHub puede abrir una ventana del navegador. Después, GitHub Actions realiza el despliegue.

@@ -1,7 +1,13 @@
-﻿import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-export default defineConfig({
+// Local development uses /; production builds target the GitHub Pages project path.
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/el-imperio-monarca/' : '/',
   plugins: [react()],
-  base: '/el-imperio-monarca/',
-})
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+  },
+}));

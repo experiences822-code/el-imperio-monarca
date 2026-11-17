@@ -1,9 +1,8 @@
-﻿name: Deploy EL IMPERIO MONARCA
+name: Deploy EL IMPERIO MONARCA V2 to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -12,33 +11,31 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: github-pages
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Setup Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-
       - name: Install dependencies
-        run: npm ci
-
-      - name: Build application
+        run: npm install
+      - name: Verify public image assets
+        run: npm run check:assets
+      - name: Build production site
         run: npm run build
-
-      - name: Upload dist
+      - name: Add SPA fallback and no-Jekyll marker
+        run: cp dist/index.html dist/404.html && touch dist/.nojekyll
+      - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
-
+          path: dist
   deploy:
     environment:
       name: github-pages
